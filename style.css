@@ -98,7 +98,7 @@ h1 {
 #todo-list li {
   display: flex;
   justify-content: space-between;
-  align-items: first baseline;
+  align-items: center;
   margin-bottom: 10px;
   padding: 10px;
   border: 1px solid #ccc;
@@ -113,21 +113,16 @@ h1 {
 
 #todo-list li label {
   flex-grow: 1;
+  width: 100%;
   max-width: 900px;
   word-break: break-all;
   transition: all 300ms;
 }
 
 #todo-list li button {
-  background-color: transparent;
   border: none;
   cursor: pointer;
   margin-left: 10px;
-}
-
-#todo-list li button:first-child {
-  background-color: #2196f3;
-  color: white;
 }
 
 #todo-list li.completed {
@@ -141,24 +136,67 @@ h1 {
   color: rgba(255, 255, 255, 0.768);
 }
 
-#todo-list li.completed button .fa {
-  color: white;
+.btnContainer {
+  display: flex;
 }
 
-.fa {
-  font-size: 1.15rem;
-}
-
-.fa-trash {
+.icon {
+  height: 25px;
+  object-fit: contain;
   color: #fff;
+  pointer-events: none;
+}
+
+.delete {
   background-color: rgb(255, 0, 0);
-  padding: 5px 8px;
-  border-radius: 5px;
 }
 
-.fa-pencil {
-  color: #fff;
+.edit {
   background-color: #836ce8;
-  padding: 5px 8px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #836ce8;
+  color: white;
   border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+  height: 100%;
+}
+
+.btn > .Text {
+  font-size: 1.05em;
+  display: none;
+  font-weight: 700;
+}
+
+.btn:last-child {
+  background-color: #f00;
+}
+
+@media only screen and (max-width: 350px) {
+  #todo-list li {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .btnContainer {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .btnContainer > * {
+    flex: 1;
+  }
+
+  .btn > .Text {
+    display: flex;
+  }
+
+  .icon {
+    height: 20px;
+  }
 }

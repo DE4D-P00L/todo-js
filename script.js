@@ -3,8 +3,16 @@ window.addEventListener("load", () => {
   const priorityCB = document.getElementById("priorityCB");
   const todoList = document.getElementById("todo-list");
   const newTodoInput = document.getElementById("new-todo");
+  const hCountSpan = document.getElementById("hCountSpan");
 
   let todos = getTodosFromStorage();
+  let hCount = todos?.filter((todo) => todo.isHighPriority).length;
+
+  function refreshHCount() {
+    hCountSpan.innerText = todos?.filter((todo) => todo.isHighPriority).length;
+  }
+
+  hCountSpan.innerText = hCount;
 
   todos.forEach(createTodoListItem);
 
@@ -38,6 +46,7 @@ window.addEventListener("load", () => {
     todos.push(todo);
     saveTodosToStorage(todos);
     createTodoListItem(todo);
+    refreshHCount();
   }
 
   function createTodoListItem(todo) {
@@ -55,7 +64,9 @@ window.addEventListener("load", () => {
     label.innerText = todo.text;
 
     const editBtn = document.createElement("button");
-    editBtn.innerHTML = '<i class="fa fa-pencil" aria-hidden="true"></i>';
+    editBtn.innerHTML =
+      '<img src="./assets/icons8-edit-24.png" class="icon edit" alt="" />';
+    // editBtn.innerHTML = '<i class="fa fa-pencil" aria-hidden="true"></i>';
     editBtn.addEventListener("click", () => {
       const newText = prompt("Enter new text for the task:");
       if (newText) {
@@ -66,19 +77,46 @@ window.addEventListener("load", () => {
     });
 
     const deleteBtn = document.createElement("button");
-    deleteBtn.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
+    deleteBtn.innerHTML =
+      '<img src="./assets/icons8-delete-24.png" class="icon delete" alt="" />';
+    // deleteBtn.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
+    const deleteText = document.createElement("p");
+    deleteText.className = "Text";
+    deleteText.innerText = "DELETE";
+    deleteBtn.appendChild(deleteText);
     deleteBtn.addEventListener("click", () => {
       const index = todos.indexOf(todo);
       todos.splice(index, 1);
       saveTodosToStorage(todos);
       todoList.removeChild(listItem);
+      refreshHCount();
     });
 
-    listItem.appendChild(checkbox);
-    listItem.appendChild(label);
-    listItem.appendChild(editBtn);
-    listItem.appendChild(deleteBtn);
-    if (todo.isHighPriority) listItem.classList.add("high-priority");
+    const cbContainer = document.createElement("div");
+    cbContainer.className = "cbContainer";
+    cbContainer.appendChild(checkbox);
+    cbContainer.appendChild(label);
+    // listItem.appendChild(checkbox);
+    // listItem.appendChild(label);
+    listItem.appendChild(cbContainer);
+
+    const btnContainer = document.createElement("div");
+    btnContainer.className = "btnContainer";
+    btnContainer.appendChild(editBtn);
+    const editText = document.createElement("p");
+    editText.className = "Text";
+    editText.innerText = "EDIT";
+    editBtn.appendChild(editText);
+    editBtn.className = "btn";
+    deleteBtn.className = "btn";
+    btnContainer.appendChild(deleteBtn);
+    // listItem.appendChild(editBtn);
+    // listItem.appendChild(deleteBtn);
+    listItem.appendChild(btnContainer);
+    if (todo.isHighPriority) {
+      listItem.classList.add("high-priority");
+      hCount++;
+    }
     if (todo.completed) {
       listItem.classList.add("completed");
     }
