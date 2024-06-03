@@ -1,0 +1,164 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #edecf5;
+}
+
+h1 {
+  text-align: center;
+  margin-block: 20px;
+}
+
+#todo-container {
+  max-width: 900px;
+  margin-inline: auto;
+  padding: 10px;
+}
+
+#todo-form {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#new-todo {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#priority-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+#priority-container label {
+  padding: 10px 0;
+}
+
+#priority-container div {
+  display: flex;
+  padding: 10px 0;
+  gap: 10px;
+}
+
+#priority-container div span.priority-label {
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+#priority-container div span.priority-label.high {
+  background-color: #0fb30a;
+}
+#priority-container div span.priority-label.low {
+  background-color: #c3c8c8;
+}
+
+#add-btn {
+  padding: 10px 20px;
+  flex-grow: 1;
+  width: 100%;
+  background-color: #7ca3dc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 5px;
+  font-weight: 800;
+  font-size: 1.05em;
+}
+
+#todo-list {
+  list-style: none;
+  padding: 0;
+}
+
+#todo-list li.high-priority {
+  background-color: #0fb30a;
+}
+
+#todo-list li.high-priority.completed {
+  background-color: #096906;
+}
+
+#todo-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: first baseline;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #c3c8c8;
+  max-width: 900px;
+}
+
+#todo-list li input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+#todo-list li label {
+  flex-grow: 1;
+  max-width: 900px;
+  word-break: break-all;
+  transition: all 300ms;
+}
+
+#todo-list li button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+#todo-list li button:first-child {
+  background-color: #2196f3;
+  color: white;
+}
+
+#todo-list li.completed {
+  background-color: #727979;
+  color: white;
+  transition: all 300ms;
+}
+
+#todo-list li.completed label {
+  text-decoration: line-through;
+  color: rgba(255, 255, 255, 0.768);
+}
+
+#todo-list li.completed button .fa {
+  color: white;
+}
+
+.fa {
+  font-size: 1.15rem;
+}
+
+.fa-trash {
+  color: #fff;
+  background-color: rgb(255, 0, 0);
+  padding: 5px 8px;
+  border-radius: 5px;
+}
+
+.fa-pencil {
+  color: #fff;
+  background-color: #836ce8;
+  padding: 5px 8px;
+  border-radius: 5px;
+}

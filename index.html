@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="todo-container">
+      <h1>ToDo List</h1>
+      <form id="todo-form">
+        <input type="text" id="new-todo" placeholder="Add a new task" />
+        <div id="priority-container">
+          <label for="priorityCB">
+            <input type="checkbox" name="priorityCB" id="priorityCB" />
+            High Priority
+          </label>
+          <div>
+            <span class="priority-label high">High Priority Tasks</span>
+            <span class="priority-label low">Low Priority Tasks</span>
+          </div>
+        </div>
+        <button type="submit" id="add-btn">
+          <i class="fa fa-plus" aria-hidden="true"></i> ADD TASK
+        </button>
+      </form>
+      <ul id="todo-list"></ul>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
