@@ -47,7 +47,3 @@ git clone https://github.com/DE4D-P00L/todo-js.git
 ## Contributing
 
 Feel free to fork the repository and contribute your enhancements or bug fixes. Please create pull requests for any changes you'd like to share.
-
-## License
-
-This project is licensed under the MIT License (refer to the LICENSE file for details).
